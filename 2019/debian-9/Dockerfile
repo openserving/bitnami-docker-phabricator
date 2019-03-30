@@ -1,4 +1,4 @@
-FROM bitnami/minideb-extras:stretch-r327
+FROM bitnami/minideb-extras:stretch-r328
 LABEL maintainer "Bitnami <containers@bitnami.com>"
 
 # Install required system packages and dependencies
@@ -8,7 +8,7 @@ RUN bitnami-pkg unpack php-7.1.27-0 --checksum 4b1d988744f941ce434e6367ae2ebb24d
 RUN bitnami-pkg install mysql-client-10.1.38-0 --checksum 7202055a6688186df2570efea631940d25f5bb6ecd06f4e036c852d13ffded0c
 RUN bitnami-pkg install libphp-7.1.27-0 --checksum 189e5268903e19b865b3aaae16535c276c2720c5104a23a2749b100c9038c6aa
 RUN bitnami-pkg install git-2.21.0-0 --checksum 37eb00d863f94194c0c31464c2c747bc784e662adbab240b5f0ef46b3e259e52
-RUN bitnami-pkg unpack phabricator-2019.12.0-0 --checksum 49c3e786f2326aa990c26362aafdabf33877ff1ed8dbbee35a4909de175cb2b0
+RUN bitnami-pkg unpack phabricator-2019.13.0-0 --checksum 5fb6afba50ece6d6d16838ca930dc81d990430714110e96162f4362b209559d9
 RUN mkdir -p /opt/bitnami/apache/tmp && chmod g+rwX /opt/bitnami/apache/tmp
 RUN ln -sf /dev/stdout /opt/bitnami/apache/logs/access_log
 RUN ln -sf /dev/stderr /opt/bitnami/apache/logs/error_log
@@ -17,7 +17,7 @@ COPY rootfs /
 ENV APACHE_HTTPS_PORT_NUMBER="443" \
     APACHE_HTTP_PORT_NUMBER="80" \
     BITNAMI_APP_NAME="phabricator" \
-    BITNAMI_IMAGE_VERSION="2019.12.0-debian-9-r6" \
+    BITNAMI_IMAGE_VERSION="2019.13.0-debian-9-r0" \
     MARIADB_HOST="mariadb" \
     MARIADB_PASSWORD="" \
     MARIADB_PORT_NUMBER="3306" \
