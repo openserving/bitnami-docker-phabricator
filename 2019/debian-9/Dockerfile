@@ -1,11 +1,11 @@
-FROM bitnami/minideb-extras:stretch-r358
+FROM bitnami/minideb-extras:stretch-r360
 LABEL maintainer "Bitnami <containers@bitnami.com>"
 
 # Install required system packages and dependencies
 RUN install_packages libbz2-1.0 libc6 libcomerr2 libcurl3 libexpat1 libffi6 libfreetype6 libgcc1 libgcrypt20 libgmp10 libgnutls30 libgpg-error0 libgssapi-krb5-2 libhogweed4 libicu57 libidn11 libidn2-0 libjpeg62-turbo libk5crypto3 libkeyutils1 libkrb5-3 libkrb5support0 libldap-2.4-2 liblzma5 libmemcached11 libmemcachedutil2 libncurses5 libnettle6 libnghttp2-14 libp11-kit0 libpcre3 libpng16-16 libpq5 libpsl5 libreadline7 librtmp1 libsasl2-2 libsqlite3-0 libssh2-1 libssl1.0.2 libssl1.1 libstdc++6 libsybdb5 libtasn1-6 libtidy5 libtinfo5 libunistring0 libxml2 libxslt1.1 libzip4 openssh-client zlib1g
 RUN bitnami-pkg unpack apache-2.4.39-1 --checksum 8b191adc55155e604cc224309a0179585f898dff83a470272d5fa5cbefc4c17e
 RUN bitnami-pkg unpack php-7.3.5-0 --checksum 0f27654056265c01afa748c3e056846d0d7f2c816b0e53ad7d723bff04cb4bce
-RUN bitnami-pkg install mysql-client-10.3.14-0 --checksum 9f78223021e366e30b263dac38b66b01d42f81bc52964faf723ea33e8cc79439
+RUN bitnami-pkg install mysql-client-10.3.15-0 --checksum eb269ede06f5e5ed64dfe3515784f2c942a944c6f32c3ff030bebd5a134a50c0
 RUN bitnami-pkg install libphp-7.3.5-0 --checksum f42f19aa538560819b223702b35518b8d59bb1e287782cd3524dc5f75721a4ac
 RUN bitnami-pkg install git-2.21.0-0 --checksum 37eb00d863f94194c0c31464c2c747bc784e662adbab240b5f0ef46b3e259e52
 RUN bitnami-pkg unpack phabricator-2019.17.0-0 --checksum 9c9076ce01b665e5862e6d3e072fd40a7ddc4dc5bee63664fefe2a68f8c6bf1a
@@ -17,7 +17,7 @@ COPY rootfs /
 ENV APACHE_HTTPS_PORT_NUMBER="443" \
     APACHE_HTTP_PORT_NUMBER="80" \
     BITNAMI_APP_NAME="phabricator" \
-    BITNAMI_IMAGE_VERSION="2019.17.0-debian-9-r4" \
+    BITNAMI_IMAGE_VERSION="2019.17.0-debian-9-r5" \
     MARIADB_HOST="mariadb" \
     MARIADB_PASSWORD="" \
     MARIADB_PORT_NUMBER="3306" \
