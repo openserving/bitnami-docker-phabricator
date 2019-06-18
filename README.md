@@ -39,7 +39,7 @@ Learn more about the Bitnami tagging policy and the difference between rolling t
 
 
 * [`2019-ol-7`, `2019.21.0-ol-7-r23` (2019/ol-7/Dockerfile)](https://github.com/bitnami/bitnami-docker-phabricator/blob/2019.21.0-ol-7-r23/2019/ol-7/Dockerfile)
-* [`2019-debian-9`, `2019.21.0-debian-9-r23`, `2019`, `2019.21.0`, `2019.21.0-r23`, `latest` (2019/debian-9/Dockerfile)](https://github.com/bitnami/bitnami-docker-phabricator/blob/2019.21.0-debian-9-r23/2019/debian-9/Dockerfile)
+* [`2019-debian-9`, `2019.21.0-debian-9-r24`, `2019`, `2019.21.0`, `2019.21.0-r24`, `latest` (2019/debian-9/Dockerfile)](https://github.com/bitnami/bitnami-docker-phabricator/blob/2019.21.0-debian-9-r24/2019/debian-9/Dockerfile)
 
 Subscribe to project updates by watching the [bitnami/phabricator GitHub repo](https://github.com/bitnami/bitnami-docker-phabricator).
 
@@ -63,6 +63,7 @@ services:
     image: 'bitnami/mariadb:latest'
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
+      - MARIADB_EXTRA_FLAGS=--local-infile=0
     volumes:
       - mariadb_data:/bitnami
   phabricator:
@@ -102,7 +103,7 @@ If you want to run the application manually instead of using `docker-compose`, t
 
   ```bash
   $ docker volume create --name mariadb_data
-  $ docker run -d --name mariadb -e ALLOW_EMPTY_PASSWORD=yes \
+  $ docker run -d --name mariadb -e ALLOW_EMPTY_PASSWORD=yes -e MARIADB_EXTRA_FLAGS=--local-infile=0 \
     --net phabricator-tier \
     --volume mariadb_data:/bitnami \
     bitnami/mariadb:latest
@@ -142,6 +143,7 @@ services:
     image: 'bitnami/mariadb:latest'
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
+      - MARIADB_EXTRA_FLAGS=--local-infile=0
     volumes:
       - /path/to/mariadb-persistence:/bitnami
   phabricator:
@@ -166,7 +168,7 @@ services:
 2. Create a MariaDB container with host volume
 
   ```bash
-  $ docker run -d --name mariadb -e ALLOW_EMPTY_PASSWORD=yes \
+  $ docker run -d --name mariadb -e ALLOW_EMPTY_PASSWORD=yes -e MARIADB_EXTRA_FLAGS=--local-infile=0 \
     --net phabricator-tier \
     --volume /path/to/mariadb-persistence:/bitnami \
     bitnami/mariadb:latest
@@ -246,6 +248,7 @@ services:
     image: 'bitnami/mariadb:latest'
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
+      - MARIADB_EXTRA_FLAGS=--local-infile=0
     volumes:
       - mariadb_data:/bitnami
   phabricator:
@@ -437,7 +440,7 @@ RUN sed -i -r 's/#LoadModule ratelimit_module/LoadModule ratelimit_module/' /opt
 
 ## Modify the ports used by Apache by default
 # It is also possible to change these environment variables at runtime
-ENV APACHE_HTTP_PORT_NUMBER=8181 
+ENV APACHE_HTTP_PORT_NUMBER=8181
 ENV APACHE_HTTPS_PORT_NUMBER=8143
 EXPOSE 8181 8143
 ```
@@ -451,6 +454,7 @@ services:
     image: 'bitnami/mariadb:10.3'
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
+      - MARIADB_EXTRA_FLAGS=--local-infile=0
     volumes:
       - 'mariadb_data:/bitnami'
   phabricator:
@@ -468,7 +472,7 @@ volumes:
   phabricator_data:
     driver: local
 ```
-  
+
 # Notable Changes
 
 ## 2019.21.0-debian-9-r3 and 2019.21.0-ol-7-r3
