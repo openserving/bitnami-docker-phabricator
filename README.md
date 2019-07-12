@@ -39,7 +39,7 @@ Learn more about the Bitnami tagging policy and the difference between rolling t
 
 
 * [`2019-ol-7`, `2019.26.0-ol-7-r2` (2019/ol-7/Dockerfile)](https://github.com/bitnami/bitnami-docker-phabricator/blob/2019.26.0-ol-7-r2/2019/ol-7/Dockerfile)
-* [`2019-debian-9`, `2019.26.0-debian-9-r1`, `2019`, `2019.26.0`, `2019.26.0-r1`, `latest` (2019/debian-9/Dockerfile)](https://github.com/bitnami/bitnami-docker-phabricator/blob/2019.26.0-debian-9-r1/2019/debian-9/Dockerfile)
+* [`2019-debian-9`, `2019.26.0-debian-9-r2`, `2019`, `2019.26.0`, `2019.26.0-r2`, `latest` (2019/debian-9/Dockerfile)](https://github.com/bitnami/bitnami-docker-phabricator/blob/2019.26.0-debian-9-r2/2019/debian-9/Dockerfile)
 
 Subscribe to project updates by watching the [bitnami/phabricator GitHub repo](https://github.com/bitnami/bitnami-docker-phabricator).
 
@@ -53,39 +53,10 @@ Phabricator requires access to a MySQL database or MariaDB database to store inf
 
 ## Using Docker Compose
 
-The recommended way to run Phabricator is using Docker Compose using the following `docker-compose.yml` template:
-
-```yaml
-version: '2'
-
-services:
-  mariadb:
-    image: 'bitnami/mariadb:latest'
-    environment:
-      - ALLOW_EMPTY_PASSWORD=yes
-      - MARIADB_EXTRA_FLAGS=--local-infile=0
-    volumes:
-      - mariadb_data:/bitnami
-  phabricator:
-    image: bitnami/phabricator:latest
-    depends_on:
-      - mariadb
-    ports:
-      - '80:80'
-      - '443:443'
-    volumes:
-      - phabricator_data:/bitnami
-
-volumes:
-  mariadb_data:
-    driver: local
-  phabricator_data:
-    driver: local
-```
-
-Launch the containers using:
+The main folder of this repository contains a functional [`docker-compose.yml`](https://github.com/bitnami/bitnami-docker-phabricator/blob/master/docker-compose.yml) file. Run the application using it as shown below:
 
 ```bash
+$ curl -sSL https://raw.githubusercontent.com/bitnami/bitnami-docker-phabricator/master/docker-compose.yml > docker-compose.yml
 $ docker-compose up -d
 ```
 
@@ -133,28 +104,20 @@ To avoid inadvertent removal of these volumes you can [mount host directories as
 
 ### Mount host directories as data volumes with Docker Compose
 
-The following `docker-compose.yml` template demonstrates the use of host directories as data volumes.
+This requires a minor change to the [`docker-compose.yml`](https://github.com/bitnami/bitnami-docker-phabricator/blob/master/docker-compose.yml) file present in this repository: 
 
 ```yaml
-version: '2'
-
 services:
   mariadb:
-    image: 'bitnami/mariadb:latest'
-    environment:
-      - ALLOW_EMPTY_PASSWORD=yes
-      - MARIADB_EXTRA_FLAGS=--local-infile=0
+  ...
     volumes:
       - /path/to/mariadb-persistence:/bitnami
+  ...
   phabricator:
-    image: bitnami/phabricator:latest
-    depends_on:
-      - mariadb
-    ports:
-      - '80:80'
-      - '443:443'
+  ...
     volumes:
       - /path/to/phabricator-persistence:/bitnami
+  ...
 ```
 
 ### Mount host directories as data volumes using the Docker command line
@@ -240,34 +203,21 @@ The Phabricator instance can be customized by specifying environment variables o
 
 ### Specifying Environment variables using Docker Compose
 
-```yaml
-version: '2'
+This requires a change to the [`docker-compose.yml`](https://github.com/bitnami/bitnami-docker-phabricator/blob/master/docker-compose.yml) file present in this repository: 
 
+```yaml
 services:
   mariadb:
-    image: 'bitnami/mariadb:latest'
+  ...
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
       - MARIADB_EXTRA_FLAGS=--local-infile=0
-    volumes:
-      - mariadb_data:/bitnami
+  ...
   phabricator:
-    image: bitnami/phabricator:latest
-    depends_on:
-      - mariadb
-    ports:
-      - '80:80'
-      - '443:443'
+  ...
     environment:
       - PHABRICATOR_PASSWORD=my_password
-    volumes:
-      - phabricator_data:/bitnami
-
-volumes:
-  mariadb_data:
-    driver: local
-  phabricator_data:
-    driver: local
+  ...
 ```
 
 ### Specifying Environment variables on the Docker command line
@@ -292,19 +242,19 @@ To configure phabricator to send email using SMTP you can set the following envi
 
 This would be an example of SMTP configuration using a GMail account:
 
- * docker-compose:
+ * By modifying the [`docker-compose.yml`](https://github.com/bitnami/bitnami-docker-phabricator/blob/master/docker-compose.yml) file present in this repository:
+
 
 ```yaml
   phabricator:
-    image: bitnami/phabricator:latest
-    ports:
-      - 80:80
+  ...
     environment:
       - SMTP_HOST=smtp.gmail.com
       - SMTP_PORT=587
       - SMTP_USER=your_email@gmail.com
       - SMTP_PASSWORD=your_password
       - SMTP_PROTOCOL=tls
+  ...
 ```
 
  * For manual execution:
@@ -389,7 +339,7 @@ COMMIT;
 EOF
   ```
 
-10. Fix phabricator directory permissions:
+10. Fix Phabricator directory permissions:
 
   ```bash
   $ docker-compose exec phabricator chown -R phabricator:phabricator /bitnami/phabricator
