@@ -5,6 +5,7 @@
   "databaseServerHost": "{{$global.env.MARIADB_HOST}}",
   "databaseServerPort": "{{$global.env.MARIADB_PORT_NUMBER}}",
   "email": "{{$global.env.PHABRICATOR_EMAIL}}",
+  "enableGitSSHRepository": "{{$global.env.PHABRICATOR_ENABLE_GIT_SSH_REPOSITORY}}",
   "firstName": "{{$global.env.PHABRICATOR_FIRSTNAME}}",
   "host": "{{$global.env.PHABRICATOR_HOST}}",
   "lastName": "{{$global.env.PHABRICATOR_LASTNAME}}",
@@ -14,5 +15,7 @@
   "smtpPort": "{{$global.env.SMTP_PORT}}",
   "smtpProtocol": "{{$global.env.SMTP_PROTOCOL}}",
   "smtpUser": "{{$global.env.SMTP_USER}}",
+  "sshServerPort": "{{$global.env.PHABRICATOR_SSH_PORT_NUMBER}}",
+  "useLFS": "{{$global.env.PHABRICATOR_USE_LFS}}",
   "username": "{{$global.env.PHABRICATOR_USERNAME}}"
 }

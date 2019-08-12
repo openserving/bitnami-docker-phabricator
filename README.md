@@ -38,7 +38,7 @@ Bitnami containers can be used with [Kubeapps](https://kubeapps.com/) for deploy
 Learn more about the Bitnami tagging policy and the difference between rolling tags and immutable tags [in our documentation page](https://docs.bitnami.com/containers/how-to/understand-rolling-tags-containers/).
 
 
-* [`2019-ol-7`, `2019.32.0-ol-7-r0` (2019/ol-7/Dockerfile)](https://github.com/bitnami/bitnami-docker-phabricator/blob/2019.32.0-ol-7-r0/2019/ol-7/Dockerfile)
+* [`2019-ol-7`, `2019.32.0-ol-7-r2` (2019/ol-7/Dockerfile)](https://github.com/bitnami/bitnami-docker-phabricator/blob/2019.32.0-ol-7-r2/2019/ol-7/Dockerfile)
 * [`2019-debian-9`, `2019.32.0-debian-9-r1`, `2019`, `2019.32.0`, `2019.32.0-r1`, `latest` (2019/debian-9/Dockerfile)](https://github.com/bitnami/bitnami-docker-phabricator/blob/2019.32.0-debian-9-r1/2019/debian-9/Dockerfile)
 
 Subscribe to project updates by watching the [bitnami/phabricator GitHub repo](https://github.com/bitnami/bitnami-docker-phabricator).
@@ -104,7 +104,7 @@ To avoid inadvertent removal of these volumes you can [mount host directories as
 
 ### Mount host directories as data volumes with Docker Compose
 
-This requires a minor change to the [`docker-compose.yml`](https://github.com/bitnami/bitnami-docker-phabricator/blob/master/docker-compose.yml) file present in this repository: 
+This requires a minor change to the [`docker-compose.yml`](https://github.com/bitnami/bitnami-docker-phabricator/blob/master/docker-compose.yml) file present in this repository:
 
 ```yaml
 services:
@@ -190,12 +190,15 @@ You can use these snapshots to restore the application state should the upgrade 
 The Phabricator instance can be customized by specifying environment variables on the first run. The following environment values are provided to customize Phabricator:
 
 - `PHABRICATOR_HOST`: Phabricator host name. Default: **127.0.0.1**
-- `PHABRICATOR_ALTERNATE_FILE_DOMAIN`: Phabricator File Domain.
 - `PHABRICATOR_USERNAME`: Phabricator application username. Default: **user**
 - `PHABRICATOR_PASSWORD`: Phabricator application password. Default: **bitnami1**
 - `PHABRICATOR_EMAIL`: Phabricator application email. Default: **user@example.com**
 - `PHABRICATOR_FIRSTNAME`: Phabricator user first name. Default: **FirstName**
 - `PHABRICATOR_LASTNAME`: Phabricator user last name. Default: **LastName**
+- `PHABRICATOR_ALTERNATE_FILE_DOMAIN`: Phabricator File Domain.
+- `PHABRICATOR_USE_LFS`: Configure Phabricator to use Git LFS. Default: **no**
+- `PHABRICATOR_SSH_PORT_NUMBER`: SSH Server Port. Default: **22**
+- `PHABRICATOR_ENABLE_GIT_SSH_REPOSITORY`: Configure a self-hosted GIT repository with SSH authentication. Default: **no**
 - `MARIADB_USER`: Root user for the MariaDB database. Default: **root**
 - `MARIADB_PASSWORD`: Root password for the MariaDB.
 - `MARIADB_HOST`: Hostname for MariaDB server. Default: **mariadb**
@@ -203,7 +206,7 @@ The Phabricator instance can be customized by specifying environment variables o
 
 ### Specifying Environment variables using Docker Compose
 
-This requires a change to the [`docker-compose.yml`](https://github.com/bitnami/bitnami-docker-phabricator/blob/master/docker-compose.yml) file present in this repository: 
+This requires a change to the [`docker-compose.yml`](https://github.com/bitnami/bitnami-docker-phabricator/blob/master/docker-compose.yml) file present in this repository:
 
 ```yaml
 services:

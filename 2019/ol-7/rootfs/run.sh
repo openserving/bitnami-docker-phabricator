@@ -14,6 +14,10 @@ _forwardTerm () {
 trap _forwardTerm TERM
 
 nami start --foreground phabricator &
+if [[ "${PHABRICATOR_ENABLE_GIT_SSH_REPOSITORY}" = "yes" ]] ; then
+    echo "Starting SSH..."
+    /usr/sbin/sshd -D &
+fi
 echo "Starting Apache..."
 exec httpd -f /opt/bitnami/apache/conf/httpd.conf -D FOREGROUND &
 wait
