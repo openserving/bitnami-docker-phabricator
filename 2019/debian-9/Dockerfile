@@ -12,7 +12,7 @@ RUN bitnami-pkg unpack phabricator-2019.37.0-0 --checksum 697636dcb03c7e92da6691
 
 COPY rootfs /
 ENV BITNAMI_APP_NAME="phabricator" \
-    BITNAMI_IMAGE_VERSION="2019.37.0-debian-9-r8" \
+    BITNAMI_IMAGE_VERSION="2019.37.0-debian-9-r9" \
     MARIADB_HOST="mariadb" \
     MARIADB_PASSWORD="" \
     MARIADB_PORT_NUMBER="3306" \
