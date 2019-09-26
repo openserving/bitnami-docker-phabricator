@@ -4,16 +4,16 @@ LABEL maintainer "Bitnami <containers@bitnami.com>"
 # Install required system packages and dependencies
 RUN install_packages bzip2-libs cyrus-sasl-lib expat freetds-libs freetype glibc gmp gnutls keyutils-libs krb5-libs libcom_err libcurl libffi libgcc libgcrypt libgpg-error libicu libidn libjpeg-turbo libmemcached libnghttp2 libpng libselinux libssh2 libstdc++ libtasn1 libtidy libxml2 libxslt ncurses-libs nettle nspr nss nss-softokn-freebl nss-util openldap openssh-server openssl-libs p11-kit pcre postgresql-libs python-pygments readline sqlite xz-libs zlib
 RUN bitnami-pkg unpack apache-2.4.41-2 --checksum bf50a12c033c1ff0e1cb7696cc1abd29a132cc1c5225e9d2fdbb3c6584e349fe
-RUN bitnami-pkg unpack php-7.3.9-2 --checksum 5c1255ac466225ad8a68d970ee6f6e2e246d39e01aeab455557ea267bd55160a
+RUN bitnami-pkg unpack php-7.3.10-0 --checksum ec8f2597324950f08a186e397fc7540919efc9a6e4db2d2a05d9fd94893c7599
 RUN bitnami-pkg install mysql-client-10.3.18-2 --checksum c9d987cf8f6f6831d04920d64598d0c77cf994235753cf4d5d18ac787c12918e
-RUN bitnami-pkg install libphp-7.3.9-1 --checksum e9089edf908dd8482b4da3830c118a9fa5fc06fd17deba8a042b1bede0897753
+RUN bitnami-pkg install libphp-7.3.10-0 --checksum b9c55b3b223315814d89e903e8a076971e2970edfaa3d74ce0377576f499eacd
 RUN bitnami-pkg install git-2.23.0-1 --checksum a145f72a986e09dbdb13ce0d1ccbaf2bb78c8571610f4d3d61b8d97abab0c342
-RUN bitnami-pkg unpack phabricator-2019.38.0-1 --checksum 103ccf0dcf6f323ad604db2ea2532c5efbb51e08996f59a136eedfe72ef4c1a3
+RUN bitnami-pkg unpack phabricator-2019.38.0-2 --checksum 8b07c01f4d044e70c20f80f8e84ae8aa7e98b205eb0df506b9ea0eaedc634071
 
 COPY rootfs /
 RUN ln -s /opt/bitnami/php/bin/php /usr/local/bin/php
 ENV BITNAMI_APP_NAME="phabricator" \
-    BITNAMI_IMAGE_VERSION="2019.38.0-ol-7-r4" \
+    BITNAMI_IMAGE_VERSION="2019.38.0-ol-7-r5" \
     MARIADB_HOST="mariadb" \
     MARIADB_PASSWORD="" \
     MARIADB_PORT_NUMBER="3306" \
