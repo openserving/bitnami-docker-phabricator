@@ -1,4 +1,4 @@
-FROM bitnami/minideb-extras:stretch-r491
+FROM bitnami/minideb-extras:stretch-r492
 LABEL maintainer "Bitnami <containers@bitnami.com>"
 
 # Install required system packages and dependencies
@@ -13,7 +13,7 @@ RUN bitnami-pkg unpack phabricator-2019.39.0-0 --checksum 62d8bc1d654909c92907ce
 COPY rootfs /
 RUN ln -s /opt/bitnami/php/bin/php /usr/local/bin/php
 ENV BITNAMI_APP_NAME="phabricator" \
-    BITNAMI_IMAGE_VERSION="2019.39.0-debian-9-r1" \
+    BITNAMI_IMAGE_VERSION="2019.39.0-debian-9-r2" \
     MARIADB_HOST="mariadb" \
     MARIADB_PASSWORD="" \
     MARIADB_PORT_NUMBER="3306" \
