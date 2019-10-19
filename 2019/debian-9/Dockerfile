@@ -13,7 +13,7 @@ RUN bitnami-pkg unpack phabricator-2019.39.0-0 --checksum 62d8bc1d654909c92907ce
 COPY rootfs /
 RUN ln -s /opt/bitnami/php/bin/php /usr/local/bin/php
 ENV BITNAMI_APP_NAME="phabricator" \
-    BITNAMI_IMAGE_VERSION="2019.39.0-debian-9-r12" \
+    BITNAMI_IMAGE_VERSION="2019.39.0-debian-9-r13" \
     MARIADB_HOST="mariadb" \
     MARIADB_PASSWORD="" \
     MARIADB_PORT_NUMBER="3306" \
