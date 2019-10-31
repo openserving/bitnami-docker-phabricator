@@ -6,9 +6,9 @@
 print_welcome_page
 
 if [[ "$1" == "nami" && "$2" == "start" ]] || [[ "$1" == "/run.sh" ]]; then
-  . /regenerate-ssh-keys.sh
-  nami_initialize apache php phabricator
-  info "Starting phabricator... "
+    . /regenerate-ssh-keys.sh
+    nami_initialize apache php phabricator
+    info "Starting phabricator... "
 fi
 
 exec tini -- "$@"
