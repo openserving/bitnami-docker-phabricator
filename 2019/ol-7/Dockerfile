@@ -1,4 +1,4 @@
-FROM bitnami/oraclelinux-extras:7-r542
+FROM bitnami/oraclelinux-extras:7-r543
 LABEL maintainer "Bitnami <containers@bitnami.com>"
 
 # Install required system packages and dependencies
@@ -13,7 +13,7 @@ RUN bitnami-pkg unpack phabricator-2019.46.0-0 --checksum b244c231b63d640892944f
 COPY rootfs /
 RUN ln -s /opt/bitnami/php/bin/php /usr/local/bin/php
 ENV BITNAMI_APP_NAME="phabricator" \
-    BITNAMI_IMAGE_VERSION="2019.46.0-ol-7-r1" \
+    BITNAMI_IMAGE_VERSION="2019.46.0-ol-7-r2" \
     MARIADB_HOST="mariadb" \
     MARIADB_PASSWORD="" \
     MARIADB_PORT_NUMBER="3306" \
