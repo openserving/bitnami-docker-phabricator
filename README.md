@@ -39,7 +39,7 @@ Learn more about the Bitnami tagging policy and the difference between rolling t
 
 
 * [`2019-ol-7`, `2019.50.0-ol-7-r44` (2019/ol-7/Dockerfile)](https://github.com/bitnami/bitnami-docker-phabricator/blob/2019.50.0-ol-7-r44/2019/ol-7/Dockerfile)
-* [`2019-debian-10`, `2019.50.0-debian-10-r0`, `2019`, `2019.50.0`, `2019.50.0-r0`, `latest` (2019/debian-10/Dockerfile)](https://github.com/bitnami/bitnami-docker-phabricator/blob/2019.50.0-debian-10-r0/2019/debian-10/Dockerfile)
+* [`2019-debian-10`, `2019.50.0-debian-10-r1`, `2019`, `2019.50.0`, `2019.50.0-r1`, `latest` (2019/debian-10/Dockerfile)](https://github.com/bitnami/bitnami-docker-phabricator/blob/2019.50.0-debian-10-r1/2019/debian-10/Dockerfile)
 
 Subscribe to project updates by watching the [bitnami/phabricator GitHub repo](https://github.com/bitnami/bitnami-docker-phabricator).
 
