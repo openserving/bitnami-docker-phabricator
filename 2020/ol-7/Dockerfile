@@ -13,7 +13,7 @@ RUN bitnami-pkg unpack php-7.3.14-0 --checksum e99cb40b76f03fde9fe864a47ef2be364
 RUN bitnami-pkg install mysql-client-10.3.22-0 --checksum a79d0068a2219cfa03e249f6eb38945b4f0c5a4d116771bcbe971470b0c29417
 RUN bitnami-pkg install libphp-7.3.14-0 --checksum 5ec940bf1429c99d5e9204f2a9ace1ce0b136cda397ecfe50f8ffef9571242db
 RUN bitnami-pkg install git-2.25.0-0 --checksum 2fd25c5b37cec238a759c3c3643c156d4fe5b00716e2152c7c494cf6729673c9
-RUN bitnami-pkg unpack phabricator-2020.6.0-0 --checksum 9b3259bb81c4adf006cdf64baf2beaa29e8b4a09784a6983da9d0f5be526b3fd
+RUN bitnami-pkg unpack phabricator-2020.7.0-0 --checksum d6b2065ae9b29f6160b807e8325028b77fbac33c6455ac78b225f7ac60d2dc11
 RUN yum upgrade -y && \
     rm -r /var/cache/yum
 RUN /build/install-gosu.sh
@@ -26,7 +26,7 @@ ENV APACHE_HTTPS_PORT_NUMBER="" \
     APACHE_SET_HTTPS_PORT="no" \
     APACHE_SET_HTTP_PORT="no" \
     BITNAMI_APP_NAME="phabricator" \
-    BITNAMI_IMAGE_VERSION="2020.6.0-ol-7-r1" \
+    BITNAMI_IMAGE_VERSION="2020.7.0-ol-7-r0" \
     MARIADB_HOST="mariadb" \
     MARIADB_PASSWORD="" \
     MARIADB_PORT_NUMBER="3306" \
