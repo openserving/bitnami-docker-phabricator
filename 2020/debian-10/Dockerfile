@@ -13,7 +13,7 @@ RUN bitnami-pkg unpack php-7.3.14-0 --checksum 58ea3eac602c9e840afb1cde192bda101
 RUN bitnami-pkg install mysql-client-10.3.22-0 --checksum 9529ac5187264223e3852602f7d9a51ed0b2547bbed99f3d05f3b7fa20adf57f
 RUN bitnami-pkg install libphp-7.3.14-0 --checksum b9d1872eeaf47fe678aaefd4d5925be1bbab64d67f808c14d849039a204faad8
 RUN bitnami-pkg install git-2.25.0-0 --checksum 392bea1a8c3607f8ebce5403ec22819915ab8a5cc2245a5249568660b4ed07df
-RUN bitnami-pkg unpack phabricator-2020.6.0-0 --checksum f4920ed74469f028eb1a913af6e46eec0b11648c294842d3034e5de6195ac882
+RUN bitnami-pkg unpack phabricator-2020.7.0-0 --checksum 02ee70d0bf72dba72f23ee55d361e00cc8f8573891e34e67a19c009c029aee5f
 RUN apt-get update && apt-get upgrade && \
     rm -r /var/lib/apt/lists /var/cache/apt/archives
 RUN /build/install-gosu.sh
@@ -26,7 +26,7 @@ ENV APACHE_HTTPS_PORT_NUMBER="" \
     APACHE_SET_HTTPS_PORT="no" \
     APACHE_SET_HTTP_PORT="no" \
     BITNAMI_APP_NAME="phabricator" \
-    BITNAMI_IMAGE_VERSION="2020.6.0-debian-10-r1" \
+    BITNAMI_IMAGE_VERSION="2020.7.0-debian-10-r0" \
     MARIADB_HOST="mariadb" \
     MARIADB_PASSWORD="" \
     MARIADB_PORT_NUMBER="3306" \
