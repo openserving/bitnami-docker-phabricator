@@ -1,4 +1,4 @@
-FROM bitnami/minideb:buster
+FROM docker.io/bitnami/minideb:buster
 LABEL maintainer "Bitnami <containers@bitnami.com>"
 
 ENV PATH="/opt/bitnami/apache/bin:/opt/bitnami/php/bin:/opt/bitnami/php/sbin:/opt/bitnami/mysql/bin:/opt/bitnami/git/bin:/opt/bitnami/common/bin:/opt/bitnami/arcanist/bin:/opt/bitnami/phabricator/bin:/opt/bitnami/common/bin:/opt/bitnami/nami/bin:$PATH"
@@ -12,7 +12,7 @@ RUN bitnami-pkg unpack apache-2.4.41-1 --checksum 2139963ce8e8fa949271b4ac7967b7
 RUN bitnami-pkg unpack php-7.3.16-0 --checksum a22f5aeeb624440e1328c333916b949705665d3973e2922c4564183c16f9daab
 RUN bitnami-pkg install mysql-client-10.3.22-1 --checksum e9fa94f574c87d15f0b6aba7cff1c06f70c0e69c1c442378c9961fc148fa68ef
 RUN bitnami-pkg install libphp-7.3.16-0 --checksum 54016628052dc5cfa73f7ca22874404effe184b768fb18fcc97000acac7e5080
-RUN bitnami-pkg install git-2.25.2-0 --checksum 4469a734bd0562815a09fe34f011628deaccbc50ce65042af9ee389c082f349f
+RUN bitnami-pkg install git-2.26.0-0 --checksum a49e9389b493b336e2c012f3ccd4632a20296029b15b1dd948a879bc9ddc7b06
 RUN bitnami-pkg install tini-0.18.0-3 --checksum 1e9b72b6636c6a48397a18df2363b44461e87ad7f892c179a9115c7525ed9327
 RUN bitnami-pkg unpack phabricator-2020.7.0-0 --checksum 02ee70d0bf72dba72f23ee55d361e00cc8f8573891e34e67a19c009c029aee5f
 RUN bitnami-pkg install gosu-1.11.0-3 --checksum c18bb8bcc95aa2494793ed5a506c4d03acc82c8c60ad061d5702e0b4048f0cb1
@@ -25,7 +25,7 @@ ENV APACHE_ENABLE_CUSTOM_PORTS="no" \
     APACHE_HTTPS_PORT_NUMBER="443" \
     APACHE_HTTP_PORT_NUMBER="80" \
     BITNAMI_APP_NAME="phabricator" \
-    BITNAMI_IMAGE_VERSION="2020.7.0-debian-10-r23" \
+    BITNAMI_IMAGE_VERSION="2020.7.0-debian-10-r24" \
     MARIADB_HOST="mariadb" \
     MARIADB_PASSWORD="" \
     MARIADB_PORT_NUMBER="3306" \
