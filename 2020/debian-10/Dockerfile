@@ -18,7 +18,7 @@ RUN bitnami-pkg unpack phabricator-2020.7.0-0 --checksum 02ee70d0bf72dba72f23ee5
 RUN bitnami-pkg install gosu-1.11.0-3 --checksum c18bb8bcc95aa2494793ed5a506c4d03acc82c8c60ad061d5702e0b4048f0cb1
 RUN apt-get update && apt-get upgrade -y && \
     rm -r /var/lib/apt/lists /var/cache/apt/archives
-RUN ln -sf /dev/stderr /opt/bitnami/apache/logs/access_log && \
+RUN ln -sf /dev/stdout /opt/bitnami/apache/logs/access_log && \
     ln -sf /dev/stderr /opt/bitnami/apache/logs/error_log
 
 COPY rootfs /
@@ -27,7 +27,7 @@ ENV APACHE_ENABLE_CUSTOM_PORTS="no" \
     APACHE_HTTPS_PORT_NUMBER="443" \
     APACHE_HTTP_PORT_NUMBER="80" \
     BITNAMI_APP_NAME="phabricator" \
-    BITNAMI_IMAGE_VERSION="2020.7.0-debian-10-r29" \
+    BITNAMI_IMAGE_VERSION="2020.7.0-debian-10-r30" \
     MARIADB_HOST="mariadb" \
     MARIADB_PASSWORD="" \
     MARIADB_PORT_NUMBER="3306" \
