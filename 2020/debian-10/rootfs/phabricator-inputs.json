@@ -10,6 +10,7 @@
   "host": "{{$global.env.PHABRICATOR_HOST}}",
   "lastName": "{{$global.env.PHABRICATOR_LASTNAME}}",
   "password": "{{$global.env.PHABRICATOR_PASSWORD}}",
+  "phpMemoryLimit": "{{$global.env.PHP_MEMORY_LIMIT}}",
   "smtpHost": "{{$global.env.SMTP_HOST}}",
   "smtpPassword": "{{$global.env.SMTP_PASSWORD}}",
   "smtpPort": "{{$global.env.SMTP_PORT}}",
