@@ -38,7 +38,7 @@ Bitnami containers can be used with [Kubeapps](https://kubeapps.com/) for deploy
 Learn more about the Bitnami tagging policy and the difference between rolling tags and immutable tags [in our documentation page](https://docs.bitnami.com/containers/how-to/understand-rolling-tags-containers/).
 
 
-* [`2020-debian-10`, `2020.7.0-debian-10-r42`, `2020`, `2020.7.0`, `latest` (2020/debian-10/Dockerfile)](https://github.com/bitnami/bitnami-docker-phabricator/blob/2020.7.0-debian-10-r42/2020/debian-10/Dockerfile)
+* [`2020-debian-10`, `2020.7.0-debian-10-r43`, `2020`, `2020.7.0`, `latest` (2020/debian-10/Dockerfile)](https://github.com/bitnami/bitnami-docker-phabricator/blob/2020.7.0-debian-10-r43/2020/debian-10/Dockerfile)
 
 Subscribe to project updates by watching the [bitnami/phabricator GitHub repo](https://github.com/bitnami/bitnami-docker-phabricator).
 
@@ -202,6 +202,7 @@ The Phabricator instance can be customized by specifying environment variables o
 - `MARIADB_PASSWORD`: Root password for the MariaDB.
 - `MARIADB_HOST`: Hostname for MariaDB server. Default: **mariadb**
 - `MARIADB_PORT_NUMBER`: Port used by MariaDB server. Default: **3306**
+- `PHP_MEMORY_LIMIT`: Memory limit for PHP. Default: **256M**
 
 ### Specifying Environment variables using Docker Compose
 
