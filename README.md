@@ -8,7 +8,7 @@ https://www.phacility.com/phabricator/
 
 ## Docker Compose
 
-```bash
+```console
 $ curl -sSL https://raw.githubusercontent.com/bitnami/bitnami-docker-phabricator/master/docker-compose.yml > docker-compose.yml
 $ docker-compose up -d
 ```
@@ -33,12 +33,10 @@ Bitnami containers can be used with [Kubeapps](https://kubeapps.com/) for deploy
 
 # Supported tags and respective `Dockerfile` links
 
-> NOTE: Debian 9 and Oracle Linux 7 images have been deprecated in favor of Debian 10 images. Bitnami will not longer publish new Docker images based on Debian 9 or Oracle Linux 7.
-
 Learn more about the Bitnami tagging policy and the difference between rolling tags and immutable tags [in our documentation page](https://docs.bitnami.com/containers/how-to/understand-rolling-tags-containers/).
 
 
-* [`2020-debian-10`, `2020.7.0-debian-10-r48`, `2020`, `2020.7.0`, `latest` (2020/debian-10/Dockerfile)](https://github.com/bitnami/bitnami-docker-phabricator/blob/2020.7.0-debian-10-r48/2020/debian-10/Dockerfile)
+* [`2020-debian-10`, `2020.7.0-debian-10-r49`, `2020`, `2020.7.0`, `latest` (2020/debian-10/Dockerfile)](https://github.com/bitnami/bitnami-docker-phabricator/blob/2020.7.0-debian-10-r49/2020/debian-10/Dockerfile)
 
 Subscribe to project updates by watching the [bitnami/phabricator GitHub repo](https://github.com/bitnami/bitnami-docker-phabricator).
 
@@ -54,7 +52,7 @@ Phabricator requires access to a MySQL database or MariaDB database to store inf
 
 The main folder of this repository contains a functional [`docker-compose.yml`](https://github.com/bitnami/bitnami-docker-phabricator/blob/master/docker-compose.yml) file. Run the application using it as shown below:
 
-```bash
+```console
 $ curl -sSL https://raw.githubusercontent.com/bitnami/bitnami-docker-phabricator/master/docker-compose.yml > docker-compose.yml
 $ docker-compose up -d
 ```
@@ -65,13 +63,13 @@ If you want to run the application manually instead of using `docker-compose`, t
 
 1. Create a network
 
-  ```bash
+  ```console
   $ docker network create phabricator-tier
   ```
 
 2. Create a volume for MariaDB persistence and create a MariaDB container
 
-  ```bash
+  ```console
   $ docker volume create --name mariadb_data
   $ docker run -d --name mariadb -e ALLOW_EMPTY_PASSWORD=yes -e MARIADB_EXTRA_FLAGS=--local-infile=0 \
     --net phabricator-tier \
@@ -81,7 +79,7 @@ If you want to run the application manually instead of using `docker-compose`, t
 
 3. Create volumes for Phabricator persistence and launch the container
 
-  ```bash
+  ```console
   $ docker volume create --name phabricator_data
   $ docker run -d --name phabricator -p 80:80 -p 443:443 \
     --net phabricator-tier \
@@ -123,13 +121,13 @@ services:
 
 1. Create a network (if it does not exist)
 
-  ```bash
+  ```console
   $ docker network create phabricator-tier
   ```
 
 2. Create a MariaDB container with host volume
 
-  ```bash
+  ```console
   $ docker run -d --name mariadb -e ALLOW_EMPTY_PASSWORD=yes -e MARIADB_EXTRA_FLAGS=--local-infile=0 \
     --net phabricator-tier \
     --volume /path/to/mariadb-persistence:/bitnami \
@@ -138,7 +136,7 @@ services:
 
 3. Create the Phabricator the container with host volumes
 
-  ```bash
+  ```console
   $ docker run -d --name phabricator -p 80:80 -p 443:443 \
     --net phabricator-tier \
     --volume /path/to/phabricator-persistence:/bitnami \
@@ -153,7 +151,7 @@ The `bitnami/phabricator:latest` tag always points to the most recent release. T
 
 1. Get the updated images:
 
-  ```bash
+  ```console
   $ docker pull bitnami/phabricator:latest
   ```
 
@@ -164,7 +162,7 @@ The `bitnami/phabricator:latest` tag always points to the most recent release. T
 
 3. Take a snapshot of the application state
 
-```bash
+```console
 $ rsync -a /path/to/phabricator-persistence /path/to/phabricator-persistence.bkp.$(date +%Y%m%d-%H.%M.%S)
 ```
 
@@ -225,7 +223,7 @@ services:
 
 ### Specifying Environment variables on the Docker command line
 
-```bash
+```console
 $ docker run -d --name phabricator -p 80:80 -p 443:443 \
   --net phabricator-tier \
   --env PHABRICATOR_PASSWORD=my_password \
@@ -262,7 +260,7 @@ This would be an example of SMTP configuration using a GMail account:
 
  * For manual execution:
 
-```bash
+```console
  $ docker run -d -e SMTP_HOST=smtp.gmail.com -e SMTP_PORT=587 -e SMTP_USER=your_email@gmail.com -e SMTP_PASSWORD=your_password -e SMTP_PROTOCOL=tls -p 80:80 --name phabricator -v /your/local/path/bitnami/phabricator:/bitnami --net=phabricator_network bitnami/phabricator
 ```
 
@@ -272,7 +270,7 @@ You can follow these steps in order to migrate it to this container:
 
 1. Export the data from your SOURCE installation: (assuming an installation in `/bitnami` directory)
 
-  ```bash
+  ```console
   $ cd /bitnami/phabricator/apps/phabricator/htdocs/bin
   $ ./storage dump | gzip > ~/backup-phabricator-mysql-dumps.sql.gz
   $ cd /bitnami/phabricator/apps/phabricator/data/
@@ -283,7 +281,7 @@ You can follow these steps in order to migrate it to this container:
 
 2. Copy the backup files to your TARGET installation:
 
-  ```bash
+  ```console
   $ scp ~/backup-phabricator-* YOUR_USERNAME@TARGET_HOST:~
   ```
 
@@ -291,13 +289,13 @@ You can follow these steps in order to migrate it to this container:
 
 4. Wait for the initial setup to finish. You can follow it with
 
-  ```bash
+  ```console
   $ docker-compose logs -f phabricator
   ```
 
   and press `Ctrl-C` when you see this:
 
-  ```
+  ```console
   nami    INFO  phabricator successfully initialized
   Starting application ...
 
@@ -307,13 +305,13 @@ You can follow these steps in order to migrate it to this container:
 
 5. Stop Phabricator daemon:
 
-  ```bash
+  ```console
   $ docker-compose exec phabricator nami stop phabricator
   ```
 
 6. Restore and upgrade the database: (replace ROOT_PASSWORD below with your MariaDB root password)
 
-  ```bash
+  ```console
   $ cd ~
   $ docker-compose exec phabricator /opt/bitnami/phabricator/bin/storage destroy --force
   $ gunzip -c ./backup-phabricator-mysql-dumps.sql.gz | docker-compose exec mariadb mysql -pROOT_PASSWORD
@@ -322,19 +320,19 @@ You can follow these steps in order to migrate it to this container:
 
 7. Restore repositories from backup:
 
-  ```bash
+  ```console
   $ cat ./backup-phabricator-repos.tar.gz | docker-compose exec phabricator bash -c 'cd /bitnami/phabricator/repo ; tar -xzvf -'
   ```
 
 8. Restore local storage files:
 
-  ```bash
+  ```console
   $ cat ./backup-phabricator-localstorage.tar.gz | docker-compose exec phabricator bash -c 'cd /bitnami/phabricator/data ; tar -xzvf -'
   ```
 
 9. Fix repositories storage location: (replace ROOT_PASSWORD below with your MariaDB root password)
 
-  ```bash
+  ```console
   $ cat | docker-compose exec mariadb mysql -pROOT_PASSWORD <<EOF
 USE bitnami_phabricator_repository;
 UPDATE repository SET localPath = REPLACE(localPath, '/bitnami/apps/phabricator/repo/', '/opt/bitnami/phabricator/repo/');
@@ -344,13 +342,13 @@ EOF
 
 10. Fix Phabricator directory permissions:
 
-  ```bash
+  ```console
   $ docker-compose exec phabricator chown -R phabricator:phabricator /bitnami/phabricator
   ```
 
 11. Restart Phabricator container:
 
-  ```bash
+  ```console
   $ docker-compose restart phabricator
   ```
 
