@@ -8,10 +8,10 @@
     },
     "git": {
         "arch": "amd64",
-        "digest": "bda714065995df169ab17f11b3a638a106aec83b00bcbfb325b36b51f29d1704",
+        "digest": "b3bca3bbf3da4e72eab97609247b1df5802d19f03a0ce51757125ebaca57ccb8",
         "distro": "debian-10",
         "type": "NAMI",
-        "version": "2.28.0-0"
+        "version": "2.29.0-0"
     },
     "gosu": {
         "arch": "amd64",
@@ -36,17 +36,17 @@
     },
     "phabricator": {
         "arch": "amd64",
-        "digest": "571ec8c535bc4e7fe21e4af94a77aa0cf14020bdc8855bd7d3e412ab3d42ede5",
+        "digest": "abd028b224607cc4d3ddb7c15a6616f3e312fd4bb9f6cf88ff7d1e1177815caf",
         "distro": "debian-10",
         "type": "NAMI",
-        "version": "2020.37.0-0"
+        "version": "2020.42.0-0"
     },
     "php": {
         "arch": "amd64",
-        "digest": "1e6aa661aac7ac3c6a5ea1993f84375cfa040178b73f75baec446edc770bf0f0",
+        "digest": "9928bbe5e9071ef8a491a55bdaf9fee0f6925cdc7bf0c843d887b59cf8b1fd9e",
         "distro": "debian-10",
         "type": "NAMI",
-        "version": "7.3.23-3"
+        "version": "7.3.23-4"
     },
     "tini": {
         "arch": "amd64",
