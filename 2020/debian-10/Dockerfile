@@ -10,7 +10,7 @@ RUN /build/bitnami-user.sh
 RUN /build/install-nami.sh
 RUN bitnami-pkg unpack php-7.3.24-1 --checksum 5f0bc0fd50d56931ac4564ee942abc147debbb59fac530342e1764d523152fba
 RUN bitnami-pkg unpack apache-2.4.46-3 --checksum 07991412bb24fc8493228f4bd67b28a77e011242971dcdd687a5d2113ac89bc9
-RUN bitnami-pkg install mysql-client-10.3.26-0 --checksum 7bf8a38656fba22e7e35cbba165ca4b57037acdb7387013ab835cf61ed9eb32b
+RUN bitnami-pkg install mysql-client-10.3.27-0 --checksum f96905e763a6334b75a7cdb07f8d89658cde02be41cb09d91d0682fc649fdcff
 RUN bitnami-pkg install libphp-7.3.24-0 --checksum 56a9ba9702d7fb2ee7dedf181ee00eb6756130a234710fc04653650837f3a3ca
 RUN bitnami-pkg install git-2.29.2-0 --checksum aebe650c294f00bacd383f90db2bbf5033dc32acc500d39fa66367f0118b7c9d
 RUN bitnami-pkg install tini-0.19.0-1 --checksum 9b1f1c095944bac88a62c1b63f3bff1bb123aa7ccd371c908c0e5b41cec2528d
@@ -27,7 +27,7 @@ ENV APACHE_ENABLE_CUSTOM_PORTS="no" \
     APACHE_HTTPS_PORT_NUMBER="443" \
     APACHE_HTTP_PORT_NUMBER="80" \
     BITNAMI_APP_NAME="phabricator" \
-    BITNAMI_IMAGE_VERSION="2020.42.0-debian-10-r20" \
+    BITNAMI_IMAGE_VERSION="2020.42.0-debian-10-r21" \
     MARIADB_HOST="mariadb" \
     MARIADB_PASSWORD="" \
     MARIADB_PORT_NUMBER="3306" \
