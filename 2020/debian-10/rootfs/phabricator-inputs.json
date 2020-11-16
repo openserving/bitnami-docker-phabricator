@@ -17,6 +17,8 @@
   "smtpProtocol": "{{$global.env.SMTP_PROTOCOL}}",
   "smtpUser": "{{$global.env.SMTP_USER}}",
   "sshServerPort": "{{$global.env.PHABRICATOR_SSH_PORT_NUMBER}}",
+  "systemVCSGroup": "{{$global.env.PHABRICATOR_SSH_VCS_GROUP}}",
+  "systemVCSUser": "{{$global.env.PHABRICATOR_SSH_VCS_USER}}",
   "useLFS": "{{$global.env.PHABRICATOR_USE_LFS}}",
   "username": "{{$global.env.PHABRICATOR_USERNAME}}"
 }

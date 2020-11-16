@@ -38,7 +38,7 @@ Bitnami containers can be used with [Kubeapps](https://kubeapps.com/) for deploy
 Learn more about the Bitnami tagging policy and the difference between rolling tags and immutable tags [in our documentation page](https://docs.bitnami.com/tutorials/understand-rolling-tags-containers/).
 
 
-* [`2020`, `2020-debian-10`, `2020.42.0`, `2020.42.0-debian-10-r24`, `latest` (2020/debian-10/Dockerfile)](https://github.com/bitnami/bitnami-docker-phabricator/blob/2020.42.0-debian-10-r24/2020/debian-10/Dockerfile)
+* [`2020`, `2020-debian-10`, `2020.42.0`, `2020.42.0-debian-10-r25`, `latest` (2020/debian-10/Dockerfile)](https://github.com/bitnami/bitnami-docker-phabricator/blob/2020.42.0-debian-10-r25/2020/debian-10/Dockerfile)
 
 Subscribe to project updates by watching the [bitnami/phabricator GitHub repo](https://github.com/bitnami/bitnami-docker-phabricator).
 
@@ -197,6 +197,8 @@ The Phabricator instance can be customized by specifying environment variables o
 - `PHABRICATOR_ALTERNATE_FILE_DOMAIN`: Phabricator File Domain.
 - `PHABRICATOR_USE_LFS`: Configure Phabricator to use Git LFS. Default: **no**
 - `PHABRICATOR_SSH_PORT_NUMBER`: SSH Server Port. Default: **22**
+- `PHABRICATOR_SSH_VCS_GROUP`: VCS group for SSH access. Default: **git**
+- `PHABRICATOR_SSH_VCS_USER`: VCS user for SSH access. Default: **git**
 - `PHABRICATOR_ENABLE_GIT_SSH_REPOSITORY`: Configure a self-hosted GIT repository with SSH authentication. Default: **no**
 - `MARIADB_USER`: Root user for the MariaDB database. Default: **root**
 - `MARIADB_PASSWORD`: Root password for the MariaDB.
