@@ -22,12 +22,13 @@ RUN ln -sf /dev/stdout /opt/bitnami/apache/logs/access_log && \
     ln -sf /dev/stderr /opt/bitnami/apache/logs/error_log
 
 COPY rootfs /
-RUN ln -s /opt/bitnami/php/bin/php /usr/local/bin/php
+RUN ln -s /opt/bitnami/php/bin/php /usr/local/bin/php && \
+    ln -s /opt/bitnami/php/bin/php /usr/bin/php
 ENV APACHE_ENABLE_CUSTOM_PORTS="no" \
     APACHE_HTTPS_PORT_NUMBER="443" \
     APACHE_HTTP_PORT_NUMBER="80" \
     BITNAMI_APP_NAME="phabricator" \
-    BITNAMI_IMAGE_VERSION="2020.42.0-debian-10-r41" \
+    BITNAMI_IMAGE_VERSION="2020.42.0-debian-10-r43" \
     MARIADB_HOST="mariadb" \
     MARIADB_PASSWORD="" \
     MARIADB_PORT_NUMBER="3306" \
