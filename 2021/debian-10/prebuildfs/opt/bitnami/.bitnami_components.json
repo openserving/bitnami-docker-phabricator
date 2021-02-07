@@ -36,10 +36,10 @@
     },
     "phabricator": {
         "arch": "amd64",
-        "digest": "5491f7033c7c5d21ff4459a07a7be19cb47af4d4d08f8b3d02f59d5da0dabf3b",
+        "digest": "263fd5d052ff70f8badb2779a948ec4dc41476a914df91611d8aedefa554e95d",
         "distro": "debian-10",
         "type": "NAMI",
-        "version": "2021.5.0-0"
+        "version": "2021.6.0-0"
     },
     "php": {
         "arch": "amd64",
