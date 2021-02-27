@@ -15,7 +15,7 @@ RUN . /opt/bitnami/scripts/libcomponent.sh && component_unpack "mysql-client" "1
 RUN . /opt/bitnami/scripts/libcomponent.sh && component_unpack "libphp" "7.3.27-1" --checksum 92d2a0e197d171c0661a66f9e25ae6ca2f91dd6edf1c319b8e152929299c837d
 RUN . /opt/bitnami/scripts/libcomponent.sh && component_unpack "git" "2.30.1-0" --checksum 7ebcf1f8694ead1a3c2c070050fbe11e957bae6cf3fbf95e5cc22a057f3ee9e7
 RUN . /opt/bitnami/scripts/libcomponent.sh && component_unpack "render-template" "1.0.0-3" --checksum 8179ad1371c9a7d897fe3b1bf53bbe763f94edafef19acad2498dd48b3674efe
-RUN . /opt/bitnami/scripts/libcomponent.sh && component_unpack "phabricator" "2021.8.0-0" --checksum 3e27559617a8eabb629ca6f8ef3c3e6423c6d42c17967e40d95e26f26e503024
+RUN . /opt/bitnami/scripts/libcomponent.sh && component_unpack "phabricator" "2021.9.0-0" --checksum 402bce12cf3fd7aa7de37f558828d707c1b8a80e4c1325928873f8cf45bcac6d
 RUN . /opt/bitnami/scripts/libcomponent.sh && component_unpack "gosu" "1.12.0-2" --checksum 4d858ac600c38af8de454c27b7f65c0074ec3069880cb16d259a6e40a46bbc50
 RUN chmod g+rwX /opt/bitnami
 
@@ -30,7 +30,7 @@ ENV ALLOW_EMPTY_PASSWORD="no" \
     APACHE_HTTPS_PORT_NUMBER="" \
     APACHE_HTTP_PORT_NUMBER="" \
     BITNAMI_APP_NAME="phabricator" \
-    BITNAMI_IMAGE_VERSION="2021.8.0-debian-10-r7" \
+    BITNAMI_IMAGE_VERSION="2021.9.0-debian-10-r0" \
     MARIADB_HOST="mariadb" \
     MARIADB_PORT_NUMBER="3306" \
     MARIADB_ROOT_PASSWORD="" \
