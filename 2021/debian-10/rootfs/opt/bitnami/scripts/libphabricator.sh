@@ -109,7 +109,7 @@ phabricator_validate() {
     ! is_empty_value "$PHABRICATOR_USE_LFS" && check_yes_no_value "PHABRICATOR_USE_LFS"
     ! is_empty_value "$PHABRICATOR_ENABLE_HTTPS" && check_yes_no_value "PHABRICATOR_ENABLE_HTTPS"
     ! is_empty_value "$PHABRICATOR_ENABLE_PYGMENTS" && check_yes_no_value "PHABRICATOR_ENABLE_PYGMENTS"
-    ! is_empty_value "$PHABRICATOR_SSH_PORT_NUMBER" && validate_port "$PHABRICATOR_DATABASE_PORT_NUMBER"
+    ! is_empty_value "$PHABRICATOR_SSH_PORT_NUMBER" && validate_port "$PHABRICATOR_SSH_PORT_NUMBER"
     ! is_empty_value "$PHABRICATOR_SKIP_BOOTSTRAP" && check_yes_no_value "PHABRICATOR_SKIP_BOOTSTRAP"
     ! is_empty_value "$PHABRICATOR_DATABASE_HOST" && check_resolved_hostname "$PHABRICATOR_DATABASE_HOST"
     ! is_empty_value "$PHABRICATOR_DATABASE_PORT_NUMBER" && validate_port "$PHABRICATOR_DATABASE_PORT_NUMBER"
@@ -240,7 +240,7 @@ EOF
         persist_app "$app_name" "$PHABRICATOR_DATA_TO_PERSIST"
     else
         info "Restoring persisted Phabricator installation"
-        restore_persisted_app "$app_name" "$PHABRICATOR_DATA_TO_PERSIST"  
+        restore_persisted_app "$app_name" "$PHABRICATOR_DATA_TO_PERSIST"
         info "Trying to connect to the database server"
         db_host="$(phabricator_conf_get "mysql.host")"
         db_port="$(phabricator_conf_get "mysql.port")"
@@ -284,7 +284,7 @@ phabricator_conf_set() {
 # Arguments:
 #   $1 - Property key
 # Returns:
-#   (string) The property value 
+#   (string) The property value
 #########################
 phabricator_conf_get() {
     local -r key="${1:?key missing}"
@@ -332,7 +332,7 @@ phabricator_wait_for_db_connection() {
 phabricator_configure_database_credentials() {
     local -r db_user="${1:?missing database user}"
     local -r db_pass="${2:?missing database password}"
-            
+
     info "Configuring database"
     phabricator_conf_set "mysql.host"                     "$PHABRICATOR_DATABASE_HOST"
     phabricator_conf_set "mysql.port"                     "$PHABRICATOR_DATABASE_PORT_NUMBER"
@@ -390,7 +390,7 @@ phabricator_pass_user_creation_wizard() {
     local -a curl_opts curl_data_opts
 
     info "Configuring Admin Account"
-    wizard_url="http://127.0.0.1:${port}/auth/register/"    
+    wizard_url="http://127.0.0.1:${port}/auth/register/"
     cookie_file="/tmp/cookie$(generate_random_string -t alphanumeric -c 8)"
     curl_opts=("--location" "--silent" "--cookie" "$cookie_file" "--cookie-jar" "$cookie_file")
     # Ensure the web server is started
@@ -503,7 +503,7 @@ phabricator_configure_system_users() {
 #########################
 phabricator_enable_vcs_sshd_config() {
     local -r ssh_port="${PHABRICATOR_SSH_PORT_NUMBER:-"$PHABRICATOR_DEFAULT_SSH_PORT_NUMBER"}"
-    
+
     info "Configuring SSH daemon to support hosted GIT repositories"
     replace_in_file "${PHABRICATOR_BASE_DIR}/resources/sshd/phabricator-ssh-hook.sh" "^\s*VCSUSER=\s*.*$" "VCSUSER=${PHABRICATOR_SSH_VCS_USER}"
     replace_in_file "${PHABRICATOR_BASE_DIR}/resources/sshd/phabricator-ssh-hook.sh" "^\s*ROOT=\s*.*$" "ROOT=${PHABRICATOR_BASE_DIR}\nPATH=$PATH"
