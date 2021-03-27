@@ -13,16 +13,16 @@ RUN . /opt/bitnami/scripts/libcomponent.sh && component_unpack "php" "7.3.27-7" 
 RUN . /opt/bitnami/scripts/libcomponent.sh && component_unpack "apache" "2.4.46-5" --checksum f6663ef2cd47d80d63af1da7ff319ed94afe8a825115b2f52894d799013b551c
 RUN . /opt/bitnami/scripts/libcomponent.sh && component_unpack "mysql-client" "10.3.28-0" --checksum 9398376ca9e2033d5bc193232e8aa9b57d91d4ccf06fa67bfa0d30ef36e44c25
 RUN . /opt/bitnami/scripts/libcomponent.sh && component_unpack "libphp" "7.3.27-2" --checksum 136766df799e2acb375a4b2b46eb8b7e27899287f8dd22bfd8f205d6bea3c59d
-RUN . /opt/bitnami/scripts/libcomponent.sh && component_unpack "git" "2.31.0-1" --checksum 0dd2867ac19a1be539a8c40f9b1290d0a53a19d7dfe3a0ca5ee57ff795d89b4a
+RUN . /opt/bitnami/scripts/libcomponent.sh && component_unpack "git" "2.31.1-0" --checksum 08cc25cd961bf4ea1695b9d11cd4dc0ebb2f4a00afd6cacbc18c81d6cd104aa2
 RUN . /opt/bitnami/scripts/libcomponent.sh && component_unpack "render-template" "1.0.0-3" --checksum 8179ad1371c9a7d897fe3b1bf53bbe763f94edafef19acad2498dd48b3674efe
-RUN . /opt/bitnami/scripts/libcomponent.sh && component_unpack "phabricator" "2021.11.0-1" --checksum 4f9e5d6b57fd5f40622d2ca210e9cec045e545858578f1f645d19c0e8d6bfff8
+RUN . /opt/bitnami/scripts/libcomponent.sh && component_unpack "phabricator" "2021.13.0-0" --checksum 9d754e90dc39d660139a449dc57f58b3047afd6e40c2bd3fc18f28e81d1cde3d
 RUN . /opt/bitnami/scripts/libcomponent.sh && component_unpack "gosu" "1.12.0-2" --checksum 4d858ac600c38af8de454c27b7f65c0074ec3069880cb16d259a6e40a46bbc50
 RUN chmod g+rwX /opt/bitnami
 
 COPY rootfs /
 RUN /opt/bitnami/scripts/mysql-client/postunpack.sh
-RUN /opt/bitnami/scripts/php/postunpack.sh
 RUN /opt/bitnami/scripts/apache/postunpack.sh
+RUN /opt/bitnami/scripts/php/postunpack.sh
 RUN /opt/bitnami/scripts/apache-modphp/postunpack.sh
 RUN /opt/bitnami/scripts/phabricator/postunpack.sh
 ENV ALLOW_EMPTY_PASSWORD="no" \
@@ -30,7 +30,7 @@ ENV ALLOW_EMPTY_PASSWORD="no" \
     APACHE_HTTPS_PORT_NUMBER="" \
     APACHE_HTTP_PORT_NUMBER="" \
     BITNAMI_APP_NAME="phabricator" \
-    BITNAMI_IMAGE_VERSION="2021.11.0-debian-10-r13" \
+    BITNAMI_IMAGE_VERSION="2021.13.0-debian-10-r0" \
     MARIADB_HOST="mariadb" \
     MARIADB_PORT_NUMBER="3306" \
     MARIADB_ROOT_PASSWORD="" \

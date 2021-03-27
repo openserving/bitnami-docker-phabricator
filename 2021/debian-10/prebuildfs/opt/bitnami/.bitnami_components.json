@@ -8,10 +8,10 @@
     },
     "git": {
         "arch": "amd64",
-        "digest": "0dd2867ac19a1be539a8c40f9b1290d0a53a19d7dfe3a0ca5ee57ff795d89b4a",
+        "digest": "08cc25cd961bf4ea1695b9d11cd4dc0ebb2f4a00afd6cacbc18c81d6cd104aa2",
         "distro": "debian-10",
         "type": "NAMI",
-        "version": "2.31.0-1"
+        "version": "2.31.1-0"
     },
     "gosu": {
         "arch": "amd64",
@@ -36,10 +36,10 @@
     },
     "phabricator": {
         "arch": "amd64",
-        "digest": "4f9e5d6b57fd5f40622d2ca210e9cec045e545858578f1f645d19c0e8d6bfff8",
+        "digest": "9d754e90dc39d660139a449dc57f58b3047afd6e40c2bd3fc18f28e81d1cde3d",
         "distro": "debian-10",
         "type": "NAMI",
-        "version": "2021.11.0-1"
+        "version": "2021.13.0-0"
     },
     "php": {
         "arch": "amd64",
