@@ -31,7 +31,6 @@ phabricator_validate
 
 # Update web server configuration with runtime environment (needs to happen before the initialization)
 web_server_update_app_configuration "phabricator"
-
 if am_i_root; then
     # Ensure required system users exist
     # ref: https://secure.phabricator.com/book/phabricator/article/diffusion_hosting/
@@ -75,4 +74,5 @@ fi
 phabricator_initialize
 
 # Regenerate keys
+# shellcheck disable=SC2015
 am_i_root && phabricator_regenerate_ssh_keys || true
