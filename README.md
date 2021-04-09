@@ -39,7 +39,7 @@ Non-root container images add an extra layer of security and are generally recom
 Learn more about the Bitnami tagging policy and the difference between rolling tags and immutable tags [in our documentation page](https://docs.bitnami.com/tutorials/understand-rolling-tags-containers/).
 
 
-* [`2021`, `2021-debian-10`, `2021.13.0`, `2021.13.0-debian-10-r11`, `latest` (2021/debian-10/Dockerfile)](https://github.com/bitnami/bitnami-docker-phabricator/blob/2021.13.0-debian-10-r11/2021/debian-10/Dockerfile)
+* [`2021`, `2021-debian-10`, `2021.13.0`, `2021.13.0-debian-10-r12`, `latest` (2021/debian-10/Dockerfile)](https://github.com/bitnami/bitnami-docker-phabricator/blob/2021.13.0-debian-10-r12/2021/debian-10/Dockerfile)
 
 Subscribe to project updates by watching the [bitnami/phabricator GitHub repo](https://github.com/bitnami/bitnami-docker-phabricator).
 
@@ -251,6 +251,7 @@ To configure Phabricator to send email using SMTP you can set the following envi
 - `PHP_MEMORY_LIMIT`: Memory limit for PHP scripts. Default: **256M**
 - `PHP_POST_MAX_SIZE`: Maximum size for PHP POST requests. No default.
 - `PHP_UPLOAD_MAX_FILESIZE`: Maximum file size for PHP uploads. No default.
+- `PHP_ENABLE_OPCACHE`: Enable OPcache for PHP scripts. No default.
 - `PHP_EXPOSE_PHP`: Enables HTTP header with PHP version. No default.
 
 #### Example
