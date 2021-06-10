@@ -100,6 +100,13 @@ phabricator_validate() {
             print_validation_error "${1} must be set"
         fi
     }
+    check_valid_port() {
+        local port_var="${1:?missing port variable}"
+        local err
+        if ! err="$(validate_port "${!port_var}")"; then
+            print_validation_error "An invalid port was specified in the environment variable ${port_var}: ${err}."
+        fi
+    }
 
     # Warn users in case the configuration file is not writable
     is_file_writable "$PHABRICATOR_CONF_FILE" || warn "The Phabricator local configuration file '${PHABRICATOR_CONF_FILE}' is not writable. Configurations based on environment variables will not be applied for this file."
@@ -109,10 +116,10 @@ phabricator_validate() {
     ! is_empty_value "$PHABRICATOR_USE_LFS" && check_yes_no_value "PHABRICATOR_USE_LFS"
     ! is_empty_value "$PHABRICATOR_ENABLE_HTTPS" && check_yes_no_value "PHABRICATOR_ENABLE_HTTPS"
     ! is_empty_value "$PHABRICATOR_ENABLE_PYGMENTS" && check_yes_no_value "PHABRICATOR_ENABLE_PYGMENTS"
-    ! is_empty_value "$PHABRICATOR_SSH_PORT_NUMBER" && validate_port "$PHABRICATOR_SSH_PORT_NUMBER"
+    ! is_empty_value "$PHABRICATOR_SSH_PORT_NUMBER" && check_valid_port "PHABRICATOR_SSH_PORT_NUMBER"
     ! is_empty_value "$PHABRICATOR_SKIP_BOOTSTRAP" && check_yes_no_value "PHABRICATOR_SKIP_BOOTSTRAP"
     ! is_empty_value "$PHABRICATOR_DATABASE_HOST" && check_resolved_hostname "$PHABRICATOR_DATABASE_HOST"
-    ! is_empty_value "$PHABRICATOR_DATABASE_PORT_NUMBER" && validate_port "$PHABRICATOR_DATABASE_PORT_NUMBER"
+    ! is_empty_value "$PHABRICATOR_DATABASE_PORT_NUMBER" && check_valid_port "PHABRICATOR_DATABASE_PORT_NUMBER"
 
     # Validate SSH configuration
     local -r err_msg="You set the environment variable PHABRICATOR_ENABLE_GIT_SSH_REPOSITORY=yes while running the container as non-root. Please note this feature is currently supported when running the container as \"root\" at this moment."
@@ -139,9 +146,11 @@ phabricator_validate() {
 
     # Validate SMTP credentials
     if ! is_empty_value "$PHABRICATOR_SMTP_HOST"; then
-        for empty_env_var in "PHABRICATOR_SMTP_USER" "PHABRICATOR_SMTP_PASSWORD" "PHABRICATOR_SMTP_PORT_NUMBER"; do
-            is_empty_value "${!empty_env_var}" && print_validation_error "The ${empty_env_var} environment variable is empty or not set."
+        for empty_env_var in "PHABRICATOR_SMTP_USER" "PHABRICATOR_SMTP_PASSWORD"; do
+            is_empty_value "${!empty_env_var}" && warn "The ${empty_env_var} environment variable is empty or not set."
         done
+        is_empty_value "$PHABRICATOR_SMTP_PORT_NUMBER" && print_validation_error "The PHABRICATOR_SMTP_PASSWORD environment variable is empty or not set."
+        ! is_empty_value "$PHABRICATOR_SMTP_PORT_NUMBER" && check_valid_port "PHABRICATOR_SMTP_PORT_NUMBER"
         ! is_empty_value "$PHABRICATOR_SMTP_PROTOCOL" && check_multi_value "PHABRICATOR_SMTP_PROTOCOL" "ssl tls"
     fi
 
@@ -271,7 +280,7 @@ EOF
 #########################
 phabricator_conf_set() {
     local -r key="${1:?key missing}"
-    local -r value="${2:?value missing}"
+    local -r value="${2:-}"
 
     debug "Setting ${key} to '${value}' in Phabricator local configuration"
     debug_execute "${PHABRICATOR_BIN_DIR}/config" set "$key" "$value"
