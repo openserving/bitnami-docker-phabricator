@@ -14,6 +14,11 @@ services:
       - '80:8080'
       - '443:8443'
     environment:
+      - PHABRICATOR_USERNAME=openserving
+      - PHABRICATOR_PASSWORD=qFuUys37
+      - PHABRICATOR_EMAIL=phabricator@catdb.io
+      - PHABRICATOR_FIRSTNAME=admin
+      - PHABRICATOR_LASTNAME=admin
       - ALLOW_EMPTY_PASSWORD=yes
       - PHABRICATOR_HOST=127.0.0.1
     volumes:
