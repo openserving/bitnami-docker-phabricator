@@ -45,6 +45,9 @@ ENV ALLOW_EMPTY_PASSWORD="no" \
 
 EXPOSE 8080 8443
 
+# Fix issue: cannot find name for user ID 1001
+RUN useradd -g root -G root -u 1001 phabricator 
+
 USER 1001
 ENTRYPOINT [ "/opt/bitnami/scripts/phabricator/entrypoint.sh" ]
 CMD [ "/opt/bitnami/scripts/phabricator/run.sh" ]
