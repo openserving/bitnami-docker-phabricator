@@ -48,6 +48,10 @@ EXPOSE 8080 8443
 # Fix issue: cannot find name for user ID 1001
 RUN useradd -g root -G root -u 1001 phabricator 
 
+
+# Fix issue: https://github.com/bitnami/bitnami-docker-phabricator/issues/151
+RUN ln -s /opt/bitnami/php/bin/php /usr/bin/php
+
 USER 1001
 ENTRYPOINT [ "/opt/bitnami/scripts/phabricator/entrypoint.sh" ]
 CMD [ "/opt/bitnami/scripts/phabricator/run.sh" ]
