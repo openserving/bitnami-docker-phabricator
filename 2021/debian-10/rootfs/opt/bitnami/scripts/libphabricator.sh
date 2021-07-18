@@ -440,7 +440,7 @@ phabricator_configure_host() {
     local scheme
 
     get_hostname() {
-        if [[ -n "${PHABRICATOR_HOST:-}" ]]; then
+        if [[ -n "${PHABRICATOR_HOST}" ]]; then
             echo "$PHABRICATOR_HOST"
         else
             dns_lookup "$(hostname)" "v4"
@@ -456,7 +456,8 @@ phabricator_configure_host() {
         [[ "$PHABRICATOR_EXTERNAL_HTTP_PORT_NUMBER" != "80" ]] && host+=":${PHABRICATOR_EXTERNAL_HTTP_PORT_NUMBER}"
     fi
     info "Configuring Phabricator URL to ${scheme}://${host}"
-    phabricator_conf_set "phabricator.base-uri" "${scheme}://${host}"
+    # phabricator_conf_set "phabricator.base-uri" "${scheme}://${host}"
+    phabricator_conf_set "phabricator.base-uri" "${scheme}://192.168.50.2"
 }
 
 #########################

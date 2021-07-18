@@ -9,20 +9,23 @@ services:
     volumes:
       - 'mariadb_data:/bitnami/mariadb'
   phabricator:
-    image: docker.io/bitnami/phabricator:2021
+    image: catdb/phabricator:ssh
+    # image: openserving/phabricator:latest
     ports:
       - '80:8080'
       - '443:8443'
+      - '2222:2222'
     environment:
-      - PHABRICATOR_USERNAME=openserving
+      - PHABRICATOR_USERNAME=catdb
       - PHABRICATOR_PASSWORD=qFuUys37
       - PHABRICATOR_EMAIL=phabricator@catdb.io
       - PHABRICATOR_FIRSTNAME=admin
       - PHABRICATOR_LASTNAME=admin
       - ALLOW_EMPTY_PASSWORD=yes
-      - PHABRICATOR_HOST=127.0.0.1
+      - PHABRICATOR_HOST=192.168.50.2
     volumes:
       - 'phabricator_data:/bitnami/phabricator'
+    privileged: true
     depends_on:
       - mariadb
 volumes:
